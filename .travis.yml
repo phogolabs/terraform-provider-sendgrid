@@ -1,0 +1,23 @@
+language: go
+go:
+- 1.12.x
+
+install:
+- export PATH=$PATH:$HOME/gopath/bin
+- export GO111MODULE=on
+- go get -v ./..
+- go mod -v download
+- go mod -v verify
+
+script:
+- ./script/build.sh terraform-provider-hydra
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Pe0M2JNMtbJaTZ95wGYCcKlOJvobCv0ltWeWJQX48xK3aVxM17H4P5J3mQfLX8D9xIWL32wC2n+sCR+MqUVIFAoOTG+neKQmqXht3dy4+ZOdJ5/pM9+Ej8ZXmppD2+l3cB31lhqCDI/9xfsRC87NRYohz2eXaofrFjY9+IRjXmoK5Wreczj+UwGaBk+8RaGxGooQ+KVvIE2bk3UDbBnR0JWG0ZzBRT33qGSLK+JlomVndrtSTH0QDAqRuZl4NU8R3O0INy2+kAiV8XaL2VYl5ywL8YzL+C1S0ZWZvewnL/eOdkPoeDlrre4iwT5fruhWW0kLLoi3K7eRzUzzBvRlr4xjSwgsNvdDlWTlInrSEqb53Gk8BfgEruBn7CNKkFAseHGYeviYbMNMybynj4kPIuazuoR+E1s3jSBP+Uufd41+2QXipnUxZZ1TNSiuhiCCQ0rOjjNeeK2l3kp3NOvkAkA4EM3Y/9Wo6KdHNxF6e+9fkHvQzUlsPJGGa1CEuw4CSS00VKHd5jKuhl8y6qgxcprXiFU2knRt3BWffokRIFK6fY5PX3j80Q8Gs8Zal3DlL1L72ckClOV/fDm1Q4j5pBxXRCHo56bJXfZDWpi0FadgHI2qKBNIxD0+Fm6l7dt2uoVcp6fzYs/jsVE5UOlgpfLs+funIkJZU0kIbT3KFKU=
+  file: build/*
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
