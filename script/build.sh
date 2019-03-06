@@ -1,8 +1,5 @@
 #!/bin/sh -x
 
-# shellcheck disable=SC2164
-cd "$GOPATH/src/github.com/phogolasb/terraform-provider"
-
 mkdir -p "$PWD/build"
 
 export PROVIDER="$1"
