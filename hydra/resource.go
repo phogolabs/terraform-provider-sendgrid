@@ -1,9 +1,11 @@
 package hydra
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/ory/herodot"
 	"github.com/ory/hydra/sdk/go/hydra"
 	"github.com/ory/hydra/sdk/go/hydra/swagger"
 )
@@ -65,7 +67,10 @@ func (r *ClientResource) create(d *schema.ResourceData, m interface{}) error {
 		ResponseTypes: slice(d.Get("response_types")),
 	}
 
-	_, _, err := client.CreateOAuth2Client(credentials)
+	_, response, err := client.CreateOAuth2Client(credentials)
+	if err == nil {
+		err = errorf(response)
+	}
 
 	if err == nil {
 		d.SetId(credentials.ClientId)
@@ -76,11 +81,14 @@ func (r *ClientResource) create(d *schema.ResourceData, m interface{}) error {
 
 func (r *ClientResource) read(d *schema.ResourceData, m interface{}) error {
 	client := m.(*hydra.CodeGenSDK)
-	credentials, _, err := client.GetOAuth2Client(d.Get("client_id").(string))
+
+	credentials, response, err := client.GetOAuth2Client(d.Get("client_id").(string))
+	if err == nil {
+		err = errorf(response)
+	}
 
 	if err == nil {
 		d.SetId(credentials.ClientId)
-
 		d.Set("client_id", credentials.ClientId)
 		d.Set("client_secret", credentials.ClientSecret)
 		d.Set("grant_types", credentials.GrantTypes)
@@ -100,7 +108,10 @@ func (r *ClientResource) update(d *schema.ResourceData, m interface{}) error {
 		ResponseTypes: slice(d.Get("response_types")),
 	}
 
-	_, _, err := client.UpdateOAuth2Client(d.Id(), credentials)
+	_, response, err := client.UpdateOAuth2Client(d.Id(), credentials)
+	if err == nil {
+		err = errorf(response)
+	}
 
 	if err == nil {
 		d.SetId(credentials.ClientId)
@@ -109,11 +120,36 @@ func (r *ClientResource) update(d *schema.ResourceData, m interface{}) error {
 	return err
 }
 
-func (r *ClientResource) delete(d *schema.ResourceData, m interface{}) (err error) {
+func (r *ClientResource) delete(d *schema.ResourceData, m interface{}) error {
 	client := m.(*hydra.CodeGenSDK)
 
-	_, err = client.DeleteOAuth2Client(d.Get("client_id").(string))
+	response, err := client.DeleteOAuth2Client(d.Get("client_id").(string))
+	if err == nil {
+		err = errorf(response)
+	}
+
 	return err
+}
+
+func errorf(response *swagger.APIResponse) error {
+	defer response.Body.Close()
+
+	if code := response.StatusCode; code >= 400 && code <= 500 {
+		err := &Error{}
+
+		if jerr := json.NewDecoder(response.Body).Decode(err); jerr != nil {
+			return jerr
+		}
+
+		return err.Error
+	}
+
+	return nil
+}
+
+// Error is returned by the servier
+type Error struct {
+	Error *herodot.DefaultError `json:"error"`
 }
 
 func slice(slice interface{}) []string {
