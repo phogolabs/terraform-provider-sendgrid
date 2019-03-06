@@ -5,9 +5,7 @@ go:
 install:
 - export PATH=$PATH:$HOME/gopath/bin
 - export GO111MODULE=on
-- go get -v ./..
-- go mod -v download
-- go mod -v verify
+- export PWD=$HOME/gopath/src/github.com/phogolasb/terraform-provider
 
 script:
 - ./script/build.sh terraform-provider-hydra
