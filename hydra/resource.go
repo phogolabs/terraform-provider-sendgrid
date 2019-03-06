@@ -1,11 +1,10 @@
 package hydra
 
 import (
-	"encoding/json"
 	"fmt"
+	"net/http"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/ory/herodot"
 	"github.com/ory/hydra/sdk/go/hydra"
 	"github.com/ory/hydra/sdk/go/hydra/swagger"
 )
@@ -135,21 +134,10 @@ func errorf(response *swagger.APIResponse) error {
 	defer response.Body.Close()
 
 	if code := response.StatusCode; code >= 400 && code <= 500 {
-		err := &Error{}
-
-		if jerr := json.NewDecoder(response.Body).Decode(err); jerr != nil {
-			return jerr
-		}
-
-		return err.Error
+		return fmt.Errorf("%v %v", http.StatusText(code), response.Message)
 	}
 
 	return nil
-}
-
-// Error is returned by the servier
-type Error struct {
-	Error *herodot.DefaultError `json:"error"`
 }
 
 func slice(slice interface{}) []string {

@@ -7,7 +7,6 @@ replace github.com/go-resty/resty => gopkg.in/resty.v1 v1.10.3
 require (
 	github.com/apparentlymart/go-cidr v1.0.0 // indirect
 	github.com/blang/semver v3.5.1+incompatible // indirect
-	github.com/golang/gddo v0.0.0-20190301051549-9dbec5838451 // indirect
 	github.com/hashicorp/go-getter v1.2.0 // indirect
 	github.com/hashicorp/go-hclog v0.8.0 // indirect
 	github.com/hashicorp/go-plugin v0.0.0-20190220160451-3f118e8ee104 // indirect
@@ -21,7 +20,6 @@ require (
 	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/hashstructure v1.0.0 // indirect
-	github.com/ory/herodot v0.6.0
 	github.com/ory/hydra v0.0.0-20190306095419-bd5b90b1a71f
 	github.com/zclconf/go-cty v0.0.0-20190212192503-19dda139b164 // indirect
 	go.opencensus.io v0.19.1 // indirect

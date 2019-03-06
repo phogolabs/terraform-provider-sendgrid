@@ -2,7 +2,7 @@
 
 mkdir -p "$PWD/build"
 
-export PROVIDER="$1"
+export PROVIDER="terraform-provider-$1"
 export CGO_ENABLED=0
 
 build_for_arch() {

@@ -97,8 +97,6 @@ github.com/gogo/protobuf v1.1.1/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7a
 github.com/gogo/protobuf v1.2.1/go.mod h1:hp+jE20tsWTFYpLwKvXlhS1hjn+gTNwPg2I6zVXpSg4=
 github.com/golang/gddo v0.0.0-20180828051604-96d2a289f41e h1:8sV50nrSGwclVxkCGHxgWfJhY6cyXS2plGjGvUzrMIw=
 github.com/golang/gddo v0.0.0-20180828051604-96d2a289f41e/go.mod h1:xEhNfoBDX1hzLm2Nf80qUvZ2sVwoMZ8d6IE2SrsQfh4=
-github.com/golang/gddo v0.0.0-20190301051549-9dbec5838451 h1:/+FTYQ7GtjCMEEAT7LO59rlG7IvLhtLhiHf/IpZ8xiM=
-github.com/golang/gddo v0.0.0-20190301051549-9dbec5838451/go.mod h1:xEhNfoBDX1hzLm2Nf80qUvZ2sVwoMZ8d6IE2SrsQfh4=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
 github.com/golang/lint v0.0.0-20180702182130-06c8688daad7/go.mod h1:tluoj9z5200jBnyusfRPU2LqT6J+DAorxEvtC7LHB+E=
@@ -285,8 +283,6 @@ github.com/ory/go-convenience v0.1.0 h1:zouLKfF2GoSGnJwGq+PE/nJAE6dj2Zj5QlTgmMTs
 github.com/ory/go-convenience v0.1.0/go.mod h1:uEY/a60PL5c12nYz4V5cHY03IBmwIAEm8TWB0yn9KNs=
 github.com/ory/graceful v0.1.0/go.mod h1:zqu70l95WrKHF4AZ6tXHvAqAvpY6M7g6ttaAVcMm7KU=
 github.com/ory/herodot v0.4.1/go.mod h1:3BOneqcyBsVybCPAJoi92KN2BpJHcmDqAMcAAaJiJow=
-github.com/ory/herodot v0.6.0 h1:Dcs4yH1Qw1GIgGCvvvdafhT8xjwElTE//8xLmHtPEYA=
-github.com/ory/herodot v0.6.0/go.mod h1:3BOneqcyBsVybCPAJoi92KN2BpJHcmDqAMcAAaJiJow=
 github.com/ory/hydra v0.0.0-20190306095419-bd5b90b1a71f h1:KfKntuxeASfxynKEjlzOvCCzCRRqwwlmWUx1UJFC1rg=
 github.com/ory/hydra v0.0.0-20190306095419-bd5b90b1a71f/go.mod h1:+mmcVO6GjTEuwCgjukCeWiaZB6NxBVn4VPKM8VPRJTM=
 github.com/ory/sqlcon v0.0.7/go.mod h1:oOyCmOJWAs8F0bnGmmIvGA9/4K1JqVL0D9JgvAaVc3U=

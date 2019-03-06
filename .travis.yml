@@ -8,7 +8,7 @@ install:
 - export PWD=$HOME/gopath/src/github.com/phogolasb/terraform-provider
 
 script:
-- ./script/build.sh terraform-provider-hydra
+- ./script/build.sh hydra
 
 deploy:
   provider: releases
