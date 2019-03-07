@@ -1,11 +1,14 @@
 package hydra
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/ory/hydra/sdk/go/hydra"
+	"github.com/ory/hydra/sdk/go/hydra/swagger"
 )
 
 // Provider for Hydra OAuth2 Server
@@ -47,7 +50,26 @@ type Error struct {
 }
 
 func (e *Error) Error() string {
-	message := fmt.Sprintf("code %v: %s %s", e.Code, e.Message, e.Description)
+	message := fmt.Sprintf("code: %v message: %s %s", e.Code, e.Message, e.Description)
 	message = strings.TrimSpace(message)
 	return message
+}
+
+func handleErr(response *swagger.APIResponse) error {
+	if code := response.StatusCode; code >= 400 && code <= 500 {
+		err := &Error{}
+
+		if uerr := json.Unmarshal(response.Payload, err); uerr == nil {
+			return err
+		}
+
+		message := string(response.Payload)
+		if message == "" {
+			message = http.StatusText(code)
+		}
+
+		return fmt.Errorf(message)
+	}
+
+	return nil
 }

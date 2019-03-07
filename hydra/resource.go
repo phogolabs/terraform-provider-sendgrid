@@ -1,9 +1,7 @@
 package hydra
 
 import (
-	"encoding/json"
 	"fmt"
-	"net/http"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/ory/hydra/sdk/go/hydra"
@@ -66,7 +64,7 @@ func (r *ClientResource) create(d *schema.ResourceData, m interface{}) error {
 
 	user, response, err := client.CreateOAuth2Client(r.get(d))
 	if err == nil {
-		err = errorf(response)
+		err = handleErr(response)
 	}
 
 	if err == nil {
@@ -81,7 +79,7 @@ func (r *ClientResource) read(d *schema.ResourceData, m interface{}) error {
 
 	user, response, err := client.GetOAuth2Client(d.Get("client_id").(string))
 	if err == nil {
-		err = errorf(response)
+		err = handleErr(response)
 	}
 
 	if err == nil {
@@ -96,7 +94,7 @@ func (r *ClientResource) update(d *schema.ResourceData, m interface{}) error {
 
 	user, response, err := client.UpdateOAuth2Client(d.Id(), r.get(d))
 	if err == nil {
-		err = errorf(response)
+		err = handleErr(response)
 	}
 
 	if err == nil {
@@ -111,7 +109,7 @@ func (r *ClientResource) delete(d *schema.ResourceData, m interface{}) error {
 
 	response, err := client.DeleteOAuth2Client(d.Get("client_id").(string))
 	if err == nil {
-		err = errorf(response)
+		err = handleErr(response)
 	}
 
 	return err
@@ -134,20 +132,6 @@ func (r *ClientResource) set(d *schema.ResourceData, client *swagger.OAuth2Clien
 	d.Set("client_secret", client.ClientSecret)
 	d.Set("grant_types", client.GrantTypes)
 	d.Set("response_types", client.ResponseTypes)
-}
-
-func errorf(response *swagger.APIResponse) error {
-	if code := response.StatusCode; code >= 400 && code <= 500 {
-		err := &Error{}
-
-		if uerr := json.Unmarshal(response.Payload, err); uerr == nil {
-			return err
-		}
-
-		return fmt.Errorf(http.StatusText(code))
-	}
-
-	return nil
 }
 
 func slice(slice interface{}) []string {
