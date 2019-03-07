@@ -1,6 +1,9 @@
 package hydra
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/ory/hydra/sdk/go/hydra"
 )
@@ -34,4 +37,17 @@ func (p *Provider) configure(d *schema.ResourceData) (interface{}, error) {
 	}
 
 	return hydra.NewSDK(config)
+}
+
+// Error represents a hydra error
+type Error struct {
+	Code        int    `json:"status_code"`
+	Message     string `json:"error"`
+	Description string `json:"error_description"`
+}
+
+func (e *Error) Error() string {
+	message := fmt.Sprintf("code %v: %s %s", e.Code, e.Message, e.Description)
+	message = strings.TrimSpace(message)
+	return message
 }

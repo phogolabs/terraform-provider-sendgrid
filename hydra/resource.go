@@ -1,6 +1,7 @@
 package hydra
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -32,25 +33,29 @@ func (r *ClientResource) Definition() *schema.Resource {
 			"client_secret": &schema.Schema{
 				Type:      schema.TypeString,
 				Sensitive: true,
-				Required:  true,
+				Optional:  true,
+				Required:  false,
 			},
 			"scope": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Optional: true,
+				Required: false,
 			},
 			"grant_types": &schema.Schema{
 				Type: schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Required: true,
+				Optional: true,
+				Required: false,
 			},
 			"response_types": &schema.Schema{
 				Type: schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Required: true,
+				Optional: true,
+				Required: false,
 			},
 		},
 	}
@@ -59,20 +64,13 @@ func (r *ClientResource) Definition() *schema.Resource {
 func (r *ClientResource) create(d *schema.ResourceData, m interface{}) error {
 	client := m.(*hydra.CodeGenSDK)
 
-	credentials := swagger.OAuth2Client{
-		ClientId:      d.Get("client_id").(string),
-		ClientSecret:  d.Get("client_secret").(string),
-		GrantTypes:    slice(d.Get("grant_types")),
-		ResponseTypes: slice(d.Get("response_types")),
-	}
-
-	_, response, err := client.CreateOAuth2Client(credentials)
+	user, response, err := client.CreateOAuth2Client(r.get(d))
 	if err == nil {
 		err = errorf(response)
 	}
 
 	if err == nil {
-		d.SetId(credentials.ClientId)
+		r.set(d, user)
 	}
 
 	return err
@@ -81,17 +79,13 @@ func (r *ClientResource) create(d *schema.ResourceData, m interface{}) error {
 func (r *ClientResource) read(d *schema.ResourceData, m interface{}) error {
 	client := m.(*hydra.CodeGenSDK)
 
-	credentials, response, err := client.GetOAuth2Client(d.Get("client_id").(string))
+	user, response, err := client.GetOAuth2Client(d.Get("client_id").(string))
 	if err == nil {
 		err = errorf(response)
 	}
 
 	if err == nil {
-		d.SetId(credentials.ClientId)
-		d.Set("client_id", credentials.ClientId)
-		d.Set("client_secret", credentials.ClientSecret)
-		d.Set("grant_types", credentials.GrantTypes)
-		d.Set("response_types", credentials.ResponseTypes)
+		r.set(d, user)
 	}
 
 	return err
@@ -100,20 +94,13 @@ func (r *ClientResource) read(d *schema.ResourceData, m interface{}) error {
 func (r *ClientResource) update(d *schema.ResourceData, m interface{}) error {
 	client := m.(*hydra.CodeGenSDK)
 
-	credentials := swagger.OAuth2Client{
-		ClientId:      d.Get("client_id").(string),
-		ClientSecret:  d.Get("client_secret").(string),
-		GrantTypes:    slice(d.Get("grant_types")),
-		ResponseTypes: slice(d.Get("response_types")),
-	}
-
-	_, response, err := client.UpdateOAuth2Client(d.Id(), credentials)
+	user, response, err := client.UpdateOAuth2Client(d.Id(), r.get(d))
 	if err == nil {
 		err = errorf(response)
 	}
 
 	if err == nil {
-		d.SetId(credentials.ClientId)
+		r.set(d, user)
 	}
 
 	return err
@@ -130,11 +117,34 @@ func (r *ClientResource) delete(d *schema.ResourceData, m interface{}) error {
 	return err
 }
 
-func errorf(response *swagger.APIResponse) error {
-	defer response.Body.Close()
+func (r *ClientResource) get(d *schema.ResourceData) swagger.OAuth2Client {
+	client := swagger.OAuth2Client{
+		ClientId:      d.Get("client_id").(string),
+		ClientSecret:  d.Get("client_secret").(string),
+		GrantTypes:    slice(d.Get("grant_types")),
+		ResponseTypes: slice(d.Get("response_types")),
+	}
 
+	return client
+}
+
+func (r *ClientResource) set(d *schema.ResourceData, client *swagger.OAuth2Client) {
+	d.SetId(client.ClientId)
+	d.Set("client_id", client.ClientId)
+	d.Set("client_secret", client.ClientSecret)
+	d.Set("grant_types", client.GrantTypes)
+	d.Set("response_types", client.ResponseTypes)
+}
+
+func errorf(response *swagger.APIResponse) error {
 	if code := response.StatusCode; code >= 400 && code <= 500 {
-		return fmt.Errorf("%v %v", http.StatusText(code), response.Message)
+		err := &Error{}
+
+		if uerr := json.Unmarshal(response.Payload, err); uerr == nil {
+			return err
+		}
+
+		return fmt.Errorf(http.StatusText(code))
 	}
 
 	return nil
