@@ -10,6 +10,7 @@ A package contains a useful [Terraform](https://www.terraform.io) Providers
 # Providers
 
 - [Ory Hydra](https://www.ory.sh/) - [documentation](provider/hydra/README.md)
+- [SendGrid](https://www.sendgrid.com/) - [documentation](provider/sendgrid/README.md)
 
 [godoc-url]: https://godoc.org/github.com/phogolabs/terraform-provider
 [godoc-img]: https://godoc.org/github.com/phogolabs/terraform-provider?status.svg

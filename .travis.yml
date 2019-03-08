@@ -9,6 +9,7 @@ install:
 
 script:
 - ./script/build.sh hydra
+- ./script/build.sh sendgrid
 
 deploy:
   provider: releases

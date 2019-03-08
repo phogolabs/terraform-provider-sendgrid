@@ -9,7 +9,10 @@ type Provider struct{}
 
 // Definition returns the provider's schema
 func (p *Provider) Definition() *schema.Provider {
-	client := &ClientResource{}
+	var (
+		template = &TemplateResource{}
+		version  = &TemplateVersionResource{}
+	)
 
 	return &schema.Provider{
 		ConfigureFunc: p.configure,
@@ -22,7 +25,8 @@ func (p *Provider) Definition() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"sendgrid_template": client.Definition(),
+			"sendgrid_template":         template.Definition(),
+			"sendgrid_template_version": version.Definition(),
 		},
 	}
 }

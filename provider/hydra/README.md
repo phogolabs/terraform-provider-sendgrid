@@ -1,4 +1,4 @@
-# Ory Hydra
+# Ory Hydra Provider
 
 It's a terraform provider that allow creating a client in [Ory Hydra OAuth2](https://www.ory.sh) server.
 
