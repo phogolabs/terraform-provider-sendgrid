@@ -9,7 +9,7 @@ A package contains a useful [Terraform](https://www.terraform.io) Providers
 
 # Providers
 
-- Provider for [Ory Hydra](https://www.ory.sh/). You can read more about how to use it [here](hydra/README.md)
+- [Ory Hydra](https://www.ory.sh/) - [documentation](provider/hydra/README.md)
 
 [godoc-url]: https://godoc.org/github.com/phogolabs/terraform-provider
 [godoc-img]: https://godoc.org/github.com/phogolabs/terraform-provider?status.svg
