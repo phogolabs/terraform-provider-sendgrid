@@ -14,6 +14,9 @@ func (r *TemplateResource) Definition() *schema.Resource {
 		Read:   r.read,
 		Update: r.update,
 		Delete: r.delete,
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 		Schema: map[string]*schema.Schema{
 			"name": &schema.Schema{
 				Type:     schema.TypeString,
@@ -98,6 +101,9 @@ func (r *TemplateVersionResource) Definition() *schema.Resource {
 		Read:   r.read,
 		Update: r.update,
 		Delete: r.delete,
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 		Schema: map[string]*schema.Schema{
 			"template_id": &schema.Schema{
 				Type:     schema.TypeString,

@@ -18,6 +18,9 @@ func (r *ClientResource) Definition() *schema.Resource {
 		Read:   r.read,
 		Update: r.update,
 		Delete: r.delete,
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
 		Schema: map[string]*schema.Schema{
 			"description": &schema.Schema{
 				Type:     schema.TypeString,
