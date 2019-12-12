@@ -18,5 +18,5 @@ A package contains a useful [Terraform](https://www.terraform.io) Providers
 [report-url]: https://goreportcard.com/report/github.com/phogolabs/terraform-provider
 [codecov-url]: https://codecov.io/gh/phogolabs/terraform-provider
 [codecov-img]: https://codecov.io/gh/phogolabs/terraform-provider/branch/master/graph/badge.svg
-[action-img]: https://github.com/phogolabs/terraform-provider/workflows/pipeline/badge.svg
+[action-img]: https://github.com/phogolabs/terraform-provider/workflows/main/badge.svg
 [action-url]: https://github.com/phogolabs/terraform-provider/actions
