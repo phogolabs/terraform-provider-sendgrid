@@ -2,7 +2,7 @@
 
 [![Documentation][godoc-img]][godoc-url]
 ![License][license-img]
-[![Build Status][travis-img]][travis-url]
+[![Build Status][action-img]][action-url]
 [![Go Report Card][report-img]][report-url]
 
 A package contains a useful [Terraform](https://www.terraform.io) Providers
@@ -17,5 +17,7 @@ A package contains a useful [Terraform](https://www.terraform.io) Providers
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg
 [report-img]: https://goreportcard.com/badge/github.com/phogolabs/terraform-provider
 [report-url]: https://goreportcard.com/report/github.com/phogolabs/terraform-provider
-[travis-img]: https://travis-ci.org/phogolabs/terraform-provider.svg?branch=master
-[travis-url]: https://travis-ci.org/phogolabs/terraform-provider
+[codecov-url]: https://codecov.io/gh/phogolabs/terraform-provider
+[codecov-img]: https://codecov.io/gh/phogolabs/terraform-provider/branch/master/graph/badge.svg
+[action-img]: https://github.com/phogolabs/terraform-provider/workflows/pipeline/badge.svg
+[action-url]: https://github.com/phogolabs/terraform-provider/actions
