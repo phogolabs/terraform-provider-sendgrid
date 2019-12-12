@@ -1,35 +1,40 @@
 module github.com/phogolabs/terraform-provider
 
-go 1.12
-
-replace github.com/go-resty/resty => gopkg.in/resty.v1 v1.10.3
+go 1.13
 
 require (
-	github.com/apparentlymart/go-cidr v1.0.0 // indirect
-	github.com/aws/aws-sdk-go v1.16.12 // indirect
-	github.com/blang/semver v3.5.1+incompatible // indirect
-	github.com/davecgh/go-spew v1.1.1
-	github.com/hashicorp/go-getter v1.2.0 // indirect
-	github.com/hashicorp/go-hclog v0.8.0 // indirect
-	github.com/hashicorp/go-plugin v0.0.0-20190220160451-3f118e8ee104 // indirect
-	github.com/hashicorp/go-uuid v1.0.1 // indirect
-	github.com/hashicorp/golang-lru v0.5.1 // indirect
-	github.com/hashicorp/hcl2 v0.0.0-20190305174554-fdf8e232b64f // indirect
+	cloud.google.com/go v0.49.0 // indirect
+	cloud.google.com/go/storage v1.4.0 // indirect
+	github.com/aws/aws-sdk-go v1.26.0 // indirect
+	github.com/bmatcuk/doublestar v1.2.1 // indirect
+	github.com/golang/groupcache v0.0.0-20191027212112-611e8accdfc9 // indirect
+	github.com/hashicorp/go-hclog v0.10.0 // indirect
+	github.com/hashicorp/go-plugin v1.0.1 // indirect
+	github.com/hashicorp/golang-lru v0.5.3 // indirect
+	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/hashicorp/hcl/v2 v2.2.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
-	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform v0.11.11
-	github.com/mitchellh/cli v1.0.0 // indirect
-	github.com/mitchellh/copystructure v1.0.0 // indirect
-	github.com/mitchellh/go-homedir v1.1.0 // indirect
-	github.com/mitchellh/hashstructure v1.0.0 // indirect
-	github.com/ory/hydra v0.0.0-20190306095419-bd5b90b1a71f
+	github.com/hashicorp/terraform v0.12.18
+	github.com/hashicorp/terraform-svchost v0.0.0-20191119180714-d2e4933b9136 // indirect
+	github.com/hashicorp/yamux v0.0.0-20190923154419-df201c70410d // indirect
+	github.com/jstemmer/go-junit-report v0.9.1 // indirect
+	github.com/mattn/go-isatty v0.0.11 // indirect
+	github.com/mitchellh/reflectwalk v1.0.1 // indirect
+	github.com/posener/complete v1.2.3 // indirect
 	github.com/sendgrid/rest v2.4.1+incompatible
-	github.com/sendgrid/sendgrid-go v3.4.1+incompatible
-	github.com/zclconf/go-cty v0.0.0-20190212192503-19dda139b164 // indirect
-	go.opencensus.io v0.19.1 // indirect
-	golang.org/x/crypto v0.0.0-20190228161510-8dd112bcdc25 // indirect
-	golang.org/x/net v0.0.0-20190301231341-16b79f2e4e95 // indirect
-	golang.org/x/sys v0.0.0-20190306071516-a98ae47d97a5 // indirect
-	google.golang.org/genproto v0.0.0-20190305195749-c21a8b77f9f0 // indirect
-	gopkg.in/resty.v1 v1.12.0 // indirect
+	github.com/sendgrid/sendgrid-go v3.5.0+incompatible
+	github.com/spf13/afero v1.2.2 // indirect
+	github.com/ulikunitz/xz v0.5.6 // indirect
+	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
+	go.opencensus.io v0.22.2 // indirect
+	golang.org/x/crypto v0.0.0-20191206172530-e9b2fee46413 // indirect
+	golang.org/x/exp v0.0.0-20191129062945-2f5052295587 // indirect
+	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
+	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
+	golang.org/x/oauth2 v0.0.0-20191202225959-858c2ad4c8b6 // indirect
+	golang.org/x/sys v0.0.0-20191210023423-ac6580df4449 // indirect
+	golang.org/x/tools v0.0.0-20191212051200-825cb0626375 // indirect
+	google.golang.org/appengine v1.6.5 // indirect
+	google.golang.org/genproto v0.0.0-20191206224255-0243a4be9c8f // indirect
+	google.golang.org/grpc v1.25.1 // indirect
 )
