@@ -20,7 +20,7 @@ require (
 	github.com/mattn/go-isatty v0.0.11 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/posener/complete v1.2.3 // indirect
-	github.com/sendgrid/rest v2.4.1+incompatible
+	github.com/sendgrid/rest v2.6.1+incompatible
 	github.com/sendgrid/sendgrid-go v3.5.0+incompatible
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/ulikunitz/xz v0.5.6 // indirect
