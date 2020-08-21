@@ -21,7 +21,7 @@ require (
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/sendgrid/rest v2.4.1+incompatible
-	github.com/sendgrid/sendgrid-go v3.5.0+incompatible
+	github.com/sendgrid/sendgrid-go v3.6.2+incompatible
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/ulikunitz/xz v0.5.6 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
