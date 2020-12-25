@@ -1,4 +1,4 @@
-# SendGrid Provider
+# terraform-provider-sendgrid
 
 [![Documentation][godoc-img]][godoc-url]
 ![License][license-img]
@@ -12,7 +12,7 @@ It's a terraform provider that allow creating a template in [SendGrid](https://w
 
 You can use the [example](./example.tf) or code snippet below:
 
-```
+```hcl
 provider "sendgrid" {
   api_key = "your-api-key"
 }
