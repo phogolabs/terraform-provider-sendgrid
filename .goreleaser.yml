@@ -5,7 +5,7 @@ before:
     # this is just an example and not a requirement for provider building/publishing
     - go mod tidy
 builds:
-- main: ./cmd/terraform-provider-prana/main.go
+- main: ./cmd/terraform-provider-sendgrid/main.go
   env:
     # goreleaser does not work with CGO, it could also complicate
     # usage by users in CI/CD systems like Terraform Cloud where
