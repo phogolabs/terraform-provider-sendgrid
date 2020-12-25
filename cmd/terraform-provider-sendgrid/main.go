@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/phogolabs/terraform-provider/provider/sendgrid"
+	"github.com/phogolabs/terraform-provider-sendgrid/sendgrid"
 )
 
 func main() {

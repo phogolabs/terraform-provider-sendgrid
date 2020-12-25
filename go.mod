@@ -1,4 +1,4 @@
-module github.com/phogolabs/terraform-provider
+module github.com/phogolabs/terraform-provider-sendgrid
 
 go 1.13
 
