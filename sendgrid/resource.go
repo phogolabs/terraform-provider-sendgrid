@@ -1,7 +1,7 @@
 package sendgrid
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 // TemplateResource represent's the flient resource
@@ -18,11 +18,11 @@ func (r *TemplateResource) Definition() *schema.Resource {
 			State: schema.ImportStatePassthrough,
 		},
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"generation": &schema.Schema{
+			"generation": {
 				Type:     schema.TypeString,
 				Default:  "dynamic",
 				Optional: true,

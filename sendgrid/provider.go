@@ -1,7 +1,7 @@
 package sendgrid
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 // Provider for Hydra OAuth2 Server
