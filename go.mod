@@ -27,7 +27,7 @@ require (
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/sendgrid/rest v2.6.3+incompatible
-	github.com/sendgrid/sendgrid-go v3.9.0+incompatible
+	github.com/sendgrid/sendgrid-go v3.10.0+incompatible
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
