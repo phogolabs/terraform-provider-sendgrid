@@ -337,6 +337,7 @@ github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/sendgrid/rest v2.6.3+incompatible h1:h/uruXAzKxVyDDIQX/MkQI73p/gsdpEnb5q2wxSvTsA=
 github.com/sendgrid/rest v2.6.3+incompatible/go.mod h1:kXX7q3jZtJXK5c5qK83bSGMdV6tsOE70KbHoqJls4lE=
+github.com/sendgrid/rest v2.6.4+incompatible/go.mod h1:kXX7q3jZtJXK5c5qK83bSGMdV6tsOE70KbHoqJls4lE=
 github.com/sendgrid/sendgrid-go v3.9.0+incompatible h1:rs5T2u6XVNDN51Z8uynH+vgKLgCem+xfuL1OMcxsmBE=
 github.com/sendgrid/sendgrid-go v3.9.0+incompatible/go.mod h1:QRQt+LX/NmgVEvmdRw0VT/QgUn499+iza2FnDca9fg8=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
